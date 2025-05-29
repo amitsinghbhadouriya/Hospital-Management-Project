@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+
+    <title>Appointment Booking | HealthBridge</title>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f1f5f9;
+            color: #333;
+        }
+
+        .card {
+            border-radius: 1rem;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2.5rem;
+            border: none;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+        }
+
+        .card-header {
+            background: linear-gradient(90deg, #3b82f6, #2563eb);
+        }
+
+        .card-body {
+            padding: 1.5rem 2rem;
+        }
+
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            background: #2563eb;
+            transition: background-color 0.3s ease;
+        }
+
+        .card:hover .icon-circle {
+            background-color: #1e40af;
+        }
+
+        .description {
+            color: #666;
+            font-size: 1rem;
+        }
+
+        .list-group-item {
+            border: none;
+            padding: 0.5rem 0;
+            font-size: 1rem;
+            color: #444;
+        }
+
+        .list-group-item strong {
+            color: #1d4ed8;
+        }
+
+        @media (min-width: 992px) {
+            .d-flex-lg-row {
+                display: flex;
+                gap: 2rem;
+                align-items: center;
+            }
+
+            .d-flex-lg-row>.card-body,
+            .d-flex-lg-row>img {
+                flex: 1;
+            }
+
+            .d-flex-lg-row>img {
+                border-radius: 1rem 0 0 1rem;
+                max-height: 400px;
+            }
+
+            .flex-lg-row-reverse>img {
+                border-radius: 0 1rem 1rem 0;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- form Modal -->
+    <div class="modal fade" id="form-model" tabindex="-1" aria-labelledby="formlabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content shadow rounded-4">
+
+                <div class="modal-header flex-column border-bottom position-relative text-center">
+                    <button type="button" class="btn-close position-absolute end-0 top-0 m-3" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                    <h3 class="modal-title fw-bold text-primary mx-auto" id="formlabel">
+                        <i class="fas fa-hospital-user me-2"></i> Book Your Appointment
+                    </h3>
+                    <p class="text-muted mt-2 mb-0 w-100">Fill in the details to schedule your visit.</p>
+                </div>
+
+
+
+                <div class="modal-body pt-3 px-4">
+                    <form action="#" method="post" id="appointmentForm" nonvalidate autocomplete="on">
+                        <!-- Personal Info -->
+                        <h4 class="fw-bold"><i class="fas fa-user me-2"></i>Personal Information</h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="fullname" class="form-label">Full Name</label>
+                                <input type="text" class="form-control" id="fullname" name="fullname"
+                                    placeholder="Enter your name" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="age" class="form-label">Age</label>
+                                <input type="number" class="form-control" id="age" name="age"
+                                    placeholder="Enter your age" required min="0" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}"
+                                    placeholder="Enter your number" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="email" class="form-label">Email Id</label>
+                                <input type="email" class="form-control" id="email" name="email"
+                                    placeholder="Enter your email" required />
+                            </div>
+                        </div>
+
+                        <!-- Medical Details -->
+                        <h4 class="fw-bold"><i class="fas fa-notes-medical me-2 mt-4"></i>Medical Details</h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="disease" class="form-label">Health Issue / Symptoms</label>
+                                <input type="text" class="form-control" id="disease" name="disease"
+                                    placeholder="Enter Health Issue" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="department" class="form-label">Department</label>
+                                <select class="form-select" id="department" name="department" required>
+                                    <option selected disabled>Select Department</option>
+                                    <option>General Medicine</option>
+                                    <option>Cardiology</option>
+                                    <option>Neurology</option>
+                                    <option>Orthopedics</option>
+                                    <option>Dermatology</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Doctor Preferences -->
+                        <h4 class="fw-bold"><i class="fas fa-user-md me-2 mt-4"></i>Doctor Preferences</h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="doctor" class="form-label">Preferred Doctor (Optional)</label>
+                                <input type="text" class="form-control" id="doctor" name="doctor"
+                                    placeholder="Enter your preferred doctor" />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="specialty" class="form-label">Doctor Specialty</label>
+                                <select class="form-select" id="specialty" name="specialty">
+                                    <option selected disabled>Select Specialty</option>
+                                    <option>Cardiologist</option>
+                                    <option>Neurologist</option>
+                                    <option>Orthopedic</option>
+                                    <option>Dermatologist</option>
+                                    <option>General Physician</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Location -->
+                        <h4 class="fw-bold"><i class="fas fa-map-marker-alt me-2 mt-4"></i>Location</h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="state" class="form-label">State</label>
+                                <select class="form-select" id="state" name="state" onchange="populateCities()"
+                                    required>
+                                    <option value="" disabled selected>-- Select State --</option>
+                                    <option>Andhra Pradesh</option>
+                                    <option>Arunachal Pradesh</option>
+                                    <option>Assam</option>
+                                    <option>Bihar</option>
+                                    <option>Chhattisgarh</option>
+                                    <option>Goa</option>
+                                    <option>Gujarat</option>
+                                    <option>Haryana</option>
+                                    <option>Himachal Pradesh</option>
+                                    <option>Jharkhand</option>
+                                    <option>Karnataka</option>
+                                    <option>Kerala</option>
+                                    <option>Madhya Pradesh</option>
+                                    <option>Maharashtra</option>
+                                    <option>Manipur</option>
+                                    <option>Meghalaya</option>
+                                    <option>Mizoram</option>
+                                    <option>Nagaland</option>
+                                    <option>Odisha</option>
+                                    <option>Punjab</option>
+                                    <option>Rajasthan</option>
+                                    <option>Sikkim</option>
+                                    <option>Tamil Nadu</option>
+                                    <option>Telangana</option>
+                                    <option>Tripura</option>
+                                    <option>Uttar Pradesh</option>
+                                    <option>Uttarakhand</option>
+                                    <option>West Bengal</option>
+                                    <option>Delhi</option>
+                                    <option>Jammu and Kashmir</option>
+                                    <option>Ladakh</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="city" class="form-label">City</label>
+                                <select id="city" name="city" class="form-select" required>
+                                    <option value="" disabled selected>-- Select City --</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label for="hospital" class="form-label">Preferred Hospital</label>
+                                <input type="text" class="form-control" id="hospital" name="hospital"
+                                    placeholder="Enter Hospital" />
+                            </div>
+                        </div>
+
+                        <!-- Schedule -->
+                        <h4 class="fw-bold"><i class="fas fa-calendar-alt me-2 mt-4"></i>Appointment Schedule</h4>
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="date" class="form-label">Preferred Date</label>
+                                <input type="date" class="form-control" id="date" name="date" required />
+                            </div>
+                            <div class="col-md-6">
+                                <label for="time" class="form-label">Time Slot</label>
+                                <select class="form-select" id="time" name="time" required>
+                                    <option selected disabled>Select Time</option>
+                                    <option>Morning (9 AM - 12 PM)</option>
+                                    <option>Afternoon (12 PM - 3 PM)</option>
+                                    <option>Evening (3 PM - 6 PM)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="text-center mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                Book Appointment <i class="fas fa-paper-plane ms-2"></i>
+                            </button>
+                        </div>
+
+                    </form>
+                    <div class="modal-footer border-0 justify-content-center">
+                        <button type="button" class="btn btn-outline-secondary btn-sm"
+                            data-bs-dismiss="modal">Close</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="pt-5 pb-3 bg-light text-center">
+        <div class="container">
+            <h1 class="text-primary fw-bold mb-3">Booking an Appointment</h1>
+            <p class="intro-text text-body-secondary fs-5 mt-0 mx-auto mb-5" style="max-width: 720px;">
+                HealthBridge makes your appointment booking easy and hassle-free. Prepare the details below to get
+                connected
+                quickly with the best healthcare professionals tailored to your needs.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-1">
+        <div class="container">
+
+            <!-- Medical Details Card -->
+            <div class="card mb-5">
+                <div class="d-flex-lg-row">
+                    <img src="../images/medical-info.png" alt="Medical Information Illustration"
+                        style=" height: 400px" />
+                    <div class="card-body">
+                        <div class="card-header border-0 fw-bold text-white py-4 px-5 fs-5 d-flex align-items-center gap-3">
+                            <i class="fas fa-notes-medical icon-circle d-inline-flex align-items-center justify-content-center text-white rounded-circle fs-3"></i>
+                            Medical Information
+                        </div>
+                        <p class="description fst-italic mb-3 mt-3">
+                            Share detailed information about your health condition to help us connect you with the
+                            most
+                            appropriate
+                            specialist.
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Disease or Concern:</strong> The illness or symptoms
+                                you
+                                want to address.</li>
+                            <li class="list-group-item"><strong>Preferred Department:</strong> Such as cardiology,
+                                dermatology, orthopedics, etc.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location Details Card -->
+            <div class="card mb-5">
+                <div class="d-flex-lg-row flex-lg-row-reverse">
+                    <img src="../images/location.png" alt="Location Details Illustration" style="height: 400px;" />
+                    <div class="card-body">
+                        <div class="card-header border-0 fw-bold text-white py-4 px-5 fs-5 d-flex align-items-center gap-3">
+                            <i class="fas fa-map-marker-alt icon-circle d-inline-flex align-items-center justify-content-center text-white rounded-circle fs-3"></i>
+                            Location Details
+                        </div>
+                        <p class="description fst-italic mb-3 mt-3">
+                            Let us know your preferred location to find nearby hospitals and doctors for your
+                            appointment.
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>State:</strong> Your state or region.</li>
+                            <li class="list-group-item"><strong>City:</strong> Your city or town.</li>
+                            <li class="list-group-item"><strong>Hospital:</strong> The hospital or clinic you want
+                                to
+                                visit.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Doctor Details Card -->
+            <div class="card mb-5">
+                <div class="d-flex-lg-row">
+                    <img src="../images/aboutpic-1.webp" alt="Doctor Selection Illustration" style="height: 400px;" />
+                    <div class="card-body">
+                        <div class="card-header border-0 fw-bold text-white py-4 px-5 fs-5 d-flex align-items-center gap-3">
+                            <i class="fas fa-user-md icon-circle d-inline-flex align-items-center justify-content-center text-white rounded-circle fs-3"></i>
+                            Doctor Selection
+                        </div>
+                        <p class="description fst-italic mb-3 mt-3">
+                            Choose a specific doctor or specify the specialty to ensure expert consultation.
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Doctor Name:</strong> If you have a preferred
+                                physician.
+                            </li>
+                            <li class="list-group-item"><strong>Specialty:</strong> The relevant medical specialty.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Appointment Preferences Card -->
+            <div class="card mb-5">
+                <div class="d-flex-lg-row flex-lg-row-reverse">
+                    <img src="../images/appointment-time.png" alt="Appointment Preferences Illustration"
+                        style="height: 400px;" />
+                    <div class="card-body">
+                        <div class="card-header border-0 fw-bold text-white py-4 px-5 fs-5 d-flex align-items-center gap-3">
+                            <i class="fas fa-calendar-check icon-circle d-inline-flex align-items-center justify-content-center text-white rounded-circle fs-3"></i>
+                            Appointment Preferences
+                        </div>
+                        <p class="description fst-italic mb-3 mt-3">
+                            Let us know your preferred date and time to book your visit conveniently.
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Preferred Date:</strong> When you wish to meet the
+                                doctor.</li>
+                            <li class="list-group-item"><strong>Preferred Time Slot:</strong> Morning, afternoon, or
+                                evening.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Patient Personal Info Card -->
+            <div class="card mb-5">
+                <div class="d-flex-lg-row">
+                    <img src="../images/patient-info.png" alt="Patient Personal Details Illustration"
+                        style="height: 400px;" />
+                    <div class="card-body">
+                        <div class="card-header border-0 fw-bold text-white py-4 px-5 fs-5 d-flex align-items-center gap-3">
+                            <i class="fas fa-id-card icon-circle d-inline-flex align-items-center justify-content-center text-white rounded-circle fs-3"></i>
+                            Patient Personal Details
+                        </div>
+                        <p class="description fst-italic mb-3 mt-3">
+                            Accurate personal details help us keep your records and communication smooth.
+                        </p>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><strong>Name:</strong> Your full name.</li>
+                            <li class="list-group-item"><strong>Age:</strong> Your age.</li>
+                            <li class="list-group-item"><strong>Phone Number:</strong> Contact for appointment
+                                confirmation.</li>
+                            <li class="list-group-item"><strong>Email ID:</strong> Used to send your appointment
+                                confirmation and updates.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mb-5">
+                <button type="button" data-bs-toggle="modal" data-bs-target="#form-model"
+                    class="btn btn-primary">Proceed to Booking Form<i class="fas fa-arrow-right ms-2"></i></button>
+            </div>
+
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <script>
+        const citiesByState = {
+            "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati", "Kakinada", "Nellore", "Rajahmundry", "Anantapur", "Kadapa", "Eluru"],
+            "Arunachal Pradesh": ["Itanagar", "Tawang", "Pasighat", "Bomdila", "Ziro", "Naharlagun", "Aalo", "Tezu", "Roing", "Changlang"],
+            "Assam": ["Guwahati", "Dibrugarh", "Jorhat", "Tezpur", "Silchar", "Nagaon", "Bongaigaon", "Tinsukia", "Goalpara", "Dhubri", "Barpeta"],
+            "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Darbhanga", "Munger", "Sasaram", "Siwan", "Arrah", "Begusarai"
+            ],
+            "Chhattisgarh": ["Raipur", "Bilaspur", "Durg", "Bhilai", "Korba", "Rajnandgaon", "Jagdalpur", "Dantewada", "Kanker", "Raigarh"
+            ],
+            "Goa": ["Panaji", "Margao", "Vasco da Gama", "Mapusa", "Ponda", "Bicholim", "Curchorem", "Quepem", "Sanguem", "Canacona"
+            ],
+            "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar", "Anand", "Nadiad", "Mehsana", "Junagadh"
+            ],
+            "Haryana": ["Gurgaon", "Faridabad", "Panipat", "Ambala", "Hisar", "Karnal", "Rohtak", "Sonipat", "Yamunanagar", "Fatehabad"
+            ],
+            "Himachal Pradesh": ["Shimla", "Dharamshala", "Mandi", "Kullu", "Solan", "Hamirpur", "Una", "Bilaspur", "Chamba", "Kinnaur"
+            ],
+            "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar", "Hazaribagh", "Giridih", "Dumka", "Chatra", "Palamu"
+            ],
+            "Karnataka": ["Bengaluru", "Mysuru", "Mangalore", "Hubli", "Belagavi", "Gulbarga", "Shimoga", "Davangere", "Udupi", "Chitradurga"
+            ],
+            "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Kollam", "Thrissur", "Alappuzha", "Kottayam", "Palakkad", "Malappuram", "Kannur", "Wayanad"
+            ],
+            "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Satna", "Rewa", "Dewas", "Ratlam", "Chhindwara", "Khandwa", "Khargone", "Betul", "Hoshangabad", "Sehore", "Shivpuri", "Tikamgarh", "Damoh", "Panna", "Sagar", "Balaghat", "Morena", "Bhind", "Datia"
+            ],
+            "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad", "Thane", "Solapur", "Kolhapur", "Amravati", "Jalna", "Akola", "Ratnagiri", "Satara", "Dhule", "Nanded", "Buldhana", "Parbhani", "Latur", "Beed", "Osmanabad"
+            ],
+            "Manipur": ["Imphal", "Thoubal", "Churachandpur", "Bishnupur", "Senapati", "Tamenglong", "Ukhrul", "Jiribam", "Kakching", "Noney"],
+            "Meghalaya": ["Shillong", "Tura", "Jowai", "Nongpoh", "Barddhaman", "Williamnagar", "Mawkyrwat", "Bholaganj", "Mairang", "Nongstoin"],
+            "Mizoram": ["Aizawl", "Lunglei", "Champhai", "Serchhip", "Kolasib", "Mamit", "Lawngtlai", "Saiha", "Saitual", "Hnahthial"],
+            "Nagaland": ["Kohima", "Dimapur", "Mokokchung", "Wokha", "Mon", "Phek", "Zunheboto", "Tuensang", "Kiphire", "Longleng"],
+            "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Sambalpur", "Puri", "Balasore", "Brahmapur", "Koraput", "Angul", "Bhadrak", "Kendrapara", "Jharsuguda", "Dhenkanal", "Nayagarh"
+            ],
+            "Punjab": ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Bathinda", "Mohali", "Hoshiarpur", "Moga", "Fatehgarh Sahib", "Rupnagar", "Sangrur", "Faridkot", "Firozpur", "Muktsar", "Tarn Taran"
+            ],
+            "Rajasthan": ["Jaipur", "Udaipur", "Jodhpur", "Ajmer", "Bikaner", "Kota", "Alwar", "Sikar", "Bhilwara", "Pali", "Chittorgarh", "Barmer", "Jaisalmer", "Sawai Madhopur", "Dausa", "Nagaur"
+            ],
+            "Sikkim": ["Gangtok", "Namchi", "Mangan", "Gyalshing", "Jorethang", "Pakyong", "Rangpo", "Singtam", "Namthang", "Yuksom"],
+            "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Salem", "Tirunelveli", "Erode", "Vellore", "Thanjavur", "Dindigul", "Kanyakumari", "Tiruppur", "Karur", "Namakkal", "Sivaganga", "Ramanathapuram"
+            ],
+            "Telangana": ["Hyderabad", "Warangal", "Nizamabad", "Khammam", "Karimnagar", "Nalgonda", "Mahbubnagar", "Rangareddy", "Medak", "Adilabad", "Nirmal", "Suryapet", "Jagtial", "Peddapalli", "Jagitial"
+            ],
+            "Tripura": ["Agartala", "Udaipur", "Dharmanagar", "Ambassa", "Kailashahar", "Belonia", "Khowai", "Teliamura", "Sabroom", "Sonamura"],
+            "Uttar Pradesh": ["Lucknow", "Kanpur", "Agra", "Varanasi", "Allahabad", "Ghaziabad", "Meerut", "Bareilly", "Aligarh", "Moradabad", "Saharanpur", "Firozabad", "Jhansi", "Rampur", "Muzaffarnagar", "Bijnor", "Shahjahanpur"
+            ],
+            "Uttarakhand": ["Dehradun", "Haridwar", "Rishikesh", "Nainital", "Roorkee", "Haldwani", "Pithoragarh", "Kashipur", "Rudrapur", "Mussoorie", "Almora", "Tehri", "Champawat", "Bageshwar", "Uttarkashi"
+            ],
+            "West Bengal": ["Kolkata", "Darjeeling", "Siliguri", "Howrah", "Asansol", "Durgapur", "Bardhaman", "Malda", "Kalyani", "Haldia", "Bishnupur", "Krishnanagar", "Purulia", "Jalpaiguri", "Cooch Behar", "Bankura"
+            ],
+            "Delhi": ["New Delhi", "Dwarka", "Rohini", "Janakpuri", "Pitampura", "Lajpat Nagar", "Vasant Kunj", "Saket", "Connaught Place", "Karol Bagh", "Chandni Chowk", "Paharganj", "Greater Kailash", "Green Park", "Defence Colony"
+            ],
+            "Jammu and Kashmir": ["Srinagar", "Jammu", "Sopore", "Anantnag", "Baramulla", "Pulwama", "Kulgam", "Kupwara", "Rajouri", "Poonch", "Udhampur", "Reasi", "Doda", "Kishtwar", "Bandipora"],
+            "Ladakh": ["Leh", "Kargil", "Nubra", "Zanskar", "Sham Valley", "Diskit", "Khaltsi", "Siachen", "Turtuk", "Hemis"],
+            "Puducherry": ["Puducherry", "Karaikal", "Yanam", "Mahe"]
+        };
+
+        function populateCities() {
+            const stateSelect = document.getElementById("state");
+            const citySelect = document.getElementById("city");
+            const selectedState = stateSelect.value;
+
+            citySelect.innerHTML = '<option value="" disabled selected>-- Select City --</option>';
+
+            if (selectedState && citiesByState[selectedState]) {
+                citiesByState[selectedState].forEach(city => {
+                    const option = document.createElement("option");
+                    option.value = city;
+                    option.textContent = city;
+                    citySelect.appendChild(option);
+                });
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const dateInput = document.getElementById("date");
+            const today = new Date().toISOString().split("T")[0];
+            dateInput.setAttribute("min", today);
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("appointmentForm");
+            if (form) {
+                form.addEventListener("submit", function (e) {
+                    e.preventDefault();
+                    alert("Appointment request submitted successfully!");
+                    this.reset();
+                    document.getElementById("city").innerHTML = '<option value="" disabled selected>-- Select City --</option>';
+                });
+            }
+        });
+    </script>
+
+</body>
+
+</html>
