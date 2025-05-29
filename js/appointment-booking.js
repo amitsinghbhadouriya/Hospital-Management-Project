@@ -2,52 +2,33 @@ const citiesByState = {
     "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati", "Kakinada", "Nellore", "Rajahmundry", "Anantapur", "Kadapa", "Eluru"],
     "Arunachal Pradesh": ["Itanagar", "Tawang", "Pasighat", "Bomdila", "Ziro", "Naharlagun", "Aalo", "Tezu", "Roing", "Changlang"],
     "Assam": ["Guwahati", "Dibrugarh", "Jorhat", "Tezpur", "Silchar", "Nagaon", "Bongaigaon", "Tinsukia", "Goalpara", "Dhubri", "Barpeta"],
-    "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Darbhanga", "Munger", "Sasaram", "Siwan", "Arrah", "Begusarai"
-    ],
-    "Chhattisgarh": ["Raipur", "Bilaspur", "Durg", "Bhilai", "Korba", "Rajnandgaon", "Jagdalpur", "Dantewada", "Kanker", "Raigarh"
-    ],
-    "Goa": ["Panaji", "Margao", "Vasco da Gama", "Mapusa", "Ponda", "Bicholim", "Curchorem", "Quepem", "Sanguem", "Canacona"
-    ],
-    "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar", "Anand", "Nadiad", "Mehsana", "Junagadh"
-    ],
-    "Haryana": ["Gurgaon", "Faridabad", "Panipat", "Ambala", "Hisar", "Karnal", "Rohtak", "Sonipat", "Yamunanagar", "Fatehabad"
-    ],
-    "Himachal Pradesh": ["Shimla", "Dharamshala", "Manali", "Kullu", "Solan", "Hamirpur", "Mandi", "Una", "Bilaspur", "Chamba", "Kinnaur"
-    ],
-    "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar", "Hazaribagh", "Giridih", "Dumka", "Chatra", "Palamu"
-    ],
-    "Karnataka": ["Bengaluru", "Mysuru", "Mangalore", "Hubli", "Belagavi", "Gulbarga", "Shimoga", "Davangere", "Udupi", "Chitradurga"
-    ],
-    "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Kollam", "Thrissur", "Alappuzha", "Kottayam", "Palakkad", "Malappuram", "Kannur", "Wayanad"
-    ],
-    "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Satna", "Rewa", "Dewas", "Ratlam", "Chhindwara", "Khandwa", "Khargone", "Betul", "Hoshangabad", "Sehore", "Shivpuri", "Tikamgarh", "Damoh", "Panna", "Balaghat", "Morena", "Bhind", "Datia"
-    ],
-    "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad", "Thane", "Solapur", "Kolhapur", "Amravati", "Jalna", "Akola", "Ratnagiri", "Satara",
-    ],
+    "Bihar": ["Patna", "Gaya", "Bhagalpur", "Muzaffarpur", "Purnia", "Darbhanga", "Munger", "Sasaram", "Siwan", "Arrah", "Begusarai"],
+    "Chhattisgarh": ["Raipur", "Bilaspur", "Durg", "Bhilai", "Korba", "Rajnandgaon", "Jagdalpur", "Dantewada", "Kanker", "Raigarh"],
+    "Goa": ["Panaji", "Margao", "Vasco da Gama", "Mapusa", "Ponda", "Bicholim", "Curchorem", "Quepem", "Sanguem", "Canacona"],
+    "Gujarat": ["Ahmedabad", "Surat", "Vadodara", "Rajkot", "Bhavnagar", "Jamnagar", "Gandhinagar", "Anand", "Nadiad", "Mehsana", "Junagadh"],
+    "Haryana": ["Gurgaon", "Faridabad", "Panipat", "Ambala", "Hisar", "Karnal", "Rohtak", "Sonipat", "Yamunanagar", "Fatehabad"],
+    "Himachal Pradesh": ["Shimla", "Dharamshala", "Manali", "Kullu", "Solan", "Hamirpur", "Mandi", "Una", "Bilaspur", "Chamba", "Kinnaur"],
+    "Jharkhand": ["Ranchi", "Jamshedpur", "Dhanbad", "Bokaro", "Deoghar", "Hazaribagh", "Giridih", "Dumka", "Chatra", "Palamu"],
+    "Karnataka": ["Bengaluru", "Mysuru", "Mangalore", "Hubli", "Belagavi", "Gulbarga", "Shimoga", "Davangere", "Udupi", "Chitradurga"],
+    "Kerala": ["Thiruvananthapuram", "Kochi", "Kozhikode", "Kollam", "Thrissur", "Alappuzha", "Kottayam", "Palakkad", "Malappuram", "Kannur", "Wayanad"],
+    "Madhya Pradesh": ["Indore", "Bhopal", "Jabalpur", "Gwalior", "Ujjain", "Sagar", "Satna", "Rewa", "Dewas", "Ratlam", "Chhindwara", "Khandwa", "Khargone", "Betul", "Hoshangabad", "Sehore", "Shivpuri", "Tikamgarh", "Damoh", "Panna", "Balaghat", "Morena", "Bhind", "Datia"],
+    "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik", "Aurangabad", "Thane", "Solapur", "Kolhapur", "Amravati", "Jalna", "Akola", "Ratnagiri", "Satara"],
     "Manipur": ["Imphal", "Thoubal", "Churachandpur", "Bishnupur", "Senapati", "Tamenglong", "Ukhrul"],
     "Meghalaya": ["Shillong", "Tura", "Jowai", "Nongpoh", "Barddhaman", "Williamnagar"],
     "Mizoram": ["Aizawl", "Lunglei", "Champhai", "Kolasib"],
     "Nagaland": ["Kohima", "Dimapur", "Mokokchung", "Wokha", "Mon", "Phek"],
-    "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Puri", "Angul", "Dhenkanal"
-    ],
+    "Odisha": ["Bhubaneswar", "Cuttack", "Rourkela", "Berhampur", "Puri", "Angul", "Dhenkanal"],
     "Punjab": ["Ludhiana", "Amritsar", "Jalandhar", "Patiala", "Mohali", "Hoshiarpur"],
-    "Rajasthan": ["Jaipur", "Udaipur", "Jodhpur", "Bikaner", "Kota"
-    ],
+    "Rajasthan": ["Jaipur", "Udaipur", "Jodhpur", "Bikaner", "Kota"],
     "Sikkim": ["Gangtok"],
-    "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Tirunelveli", "Vellore"
-    ],
-    "Telangana": ["Hyderabad", "Warangal",
-    ],
+    "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Tiruchirappalli", "Tirunelveli", "Vellore"],
+    "Telangana": ["Hyderabad", "Warangal"],
     "Tripura": ["Agartala"],
-    "Uttar Pradesh": ["Lucknow", "Kanpur", "Agra", "Varanasi", "Allahabad", "Ghaziabad", "Meerut", "Bareilly", "Aligarh", "Jhansi", "Muzaffarnagar"
-    ],
-    "Uttarakhand": ["Dehradun", "Haridwar", "Rishikesh", "Nainital", "Roorkee", "Mussoorie",
-    ],
-    "West Bengal": ["Kolkata"
-    ],
-    "Delhi": ["New Delhi", "Dwarka", "Rohini", "Janakpuri", "Lajpat Nagar", "Vasant Kunj", "Connaught Place"
-    ],
-    "Jammu and Kashmir": ["Srinagar", "Jammu", "Pulwama", "Rajouri", "Poonch",],
+    "Uttar Pradesh": ["Lucknow", "Kanpur", "Agra", "Varanasi", "Allahabad", "Ghaziabad", "Meerut", "Bareilly", "Aligarh", "Jhansi", "Muzaffarnagar"],
+    "Uttarakhand": ["Dehradun", "Haridwar", "Rishikesh", "Nainital", "Roorkee", "Mussoorie"],
+    "West Bengal": ["Kolkata"],
+    "Delhi": ["New Delhi", "Dwarka", "Rohini", "Janakpuri", "Lajpat Nagar", "Vasant Kunj", "Connaught Place"],
+    "Jammu and Kashmir": ["Srinagar", "Jammu", "Pulwama", "Rajouri", "Poonch"],
     "Ladakh": ["Leh", "Kargil"],
     "Puducherry": ["Puducherry", "Karaikal"]
 };
@@ -56,9 +37,7 @@ function populateCities() {
     const stateSelect = document.getElementById("state");
     const citySelect = document.getElementById("city");
     const selectedState = stateSelect.value;
-
     citySelect.innerHTML = '<option value="" disabled selected>-- Select City --</option>';
-
     if (selectedState && citiesByState[selectedState]) {
         citiesByState[selectedState].forEach(city => {
             const option = document.createElement("option");
@@ -337,17 +316,13 @@ const hospitalByCity = {
     "Kargil": ["Kargil Medical College", "Sher-i-Kashmir Institute of Medical Sciences", "Srinagar Medical College", "Apollo Hospital", "Care Hospital", "Shree Narayana Hospital", "City Hospital", "Sanjeevani Hospital", "KIMS Hospital", "Max Super Speciality Hospital"],
     "Puducherry": ["Jawaharlal Institute of Postgraduate Medical Education and Research", "Puducherry Medical College", "Apollo Hospital", "Care Hospital", "Shree Narayana Hospital", "City Hospital", "Sanjeevani Hospital", "KIMS Hospital", "Max Super Speciality Hospital", "Medanta - The Medicity"],
     "Karaikal": ["Karaikal Medical College", "Jawaharlal Institute of Postgraduate Medical Education and Research", "Puducherry Medical College", "Apollo Hospital", "Care Hospital", "Shree Narayana Hospital", "City Hospital", "Sanjeevani Hospital", "KIMS Hospital", "Max Super Speciality Hospital"],
-
-    // Add more cities and hospitals as needed
 };
 
 function populateHospitals() {
     const citySelect = document.getElementById("city");
     const hospitalSelect = document.getElementById("hospital");
     const selectedCity = citySelect.value;
-
     hospitalSelect.innerHTML = '<option value="" disabled selected>-- Select Hospital --</option>';
-
     if (selectedCity && hospitalByCity[selectedCity]) {
         hospitalByCity[selectedCity].forEach(hospital => {
             const option = document.createElement("option");
@@ -358,11 +333,8 @@ function populateHospitals() {
     }
 }
 
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const backHomeBtn = document.getElementById("backHomeBtn");
-
     backHomeBtn.addEventListener("click", function () {
         window.location.href = "../index.html";
     });
