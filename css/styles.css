@@ -1,0 +1,121 @@
+:root {
+    --primary-color: #d1ddef;
+    --secondary-color: #a1b1c1e2;
+    --link-color: #0d6efd;
+}
+
+
+* {
+    font-family: 'Inter', TimesNewRoman;
+}
+
+.main-header {
+    background-color: var(--primary-color);
+}
+
+.nav-link {
+    transition: all 0.3s ease;
+}
+
+.without-arrow:hover {
+    text-decoration: underline;
+    color: var(--link-color);
+}
+
+
+.nav-link:hover .link-text {
+    color: var(--link-color);
+    text-decoration: underline;
+}
+
+.search-bar {
+    width: 400px;
+}
+
+.second-header div ul li a {
+    color: black;
+}
+
+.make-account {
+    display: flex;
+    gap: 2px;
+}
+
+
+.offcanvas-header {
+    background-color: var(--primary-color);
+}
+
+.second-header {
+    background-color: var(--secondary-color);
+    height: 50px;
+}
+
+.arrow-icon {
+    transition: transform 0.3s ease;
+    border: none;
+}
+
+.nav-link:hover .arrow-icon {
+    transform: rotate(180deg);
+    color: var(--link-color);
+}
+
+.nav-item.dropdown:hover>.dropdown-menu {
+    display: block;
+    background-color: var(--secondary-color);
+}
+
+.dropdown-submenu {
+    position: relative;
+
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: 0;
+    border-radius: 0.375rem;
+    display: none;
+    position: absolute;
+    min-width: 10rem;
+    z-index: 1000;
+    background-color: #aabbcc;
+    color: white;
+}
+
+.dropdown-submenu:hover>.dropdown-menu {
+    display: block;
+}
+
+.dropdown-toggle::after {
+    display: none !important;
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: var(--primary-color);
+    color: var(--bs-primary);
+    cursor: pointer;
+}
+
+ul.dropdown-menu {
+    position: relative;
+}
+
+.dropdown-submenu.position-relative {
+    position: static !important;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    position: absolute;
+    top: 0;
+    left: 50;
+    margin-top: 0;
+    display: none;
+}
+
+
+.image {
+    width: 100%;
+    height: 600px;
+}
