@@ -19,15 +19,63 @@
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="../css/styles.css" />
-    <link rel="stylesheet" href="../css/media.css" />
 
     <title>Services | HealthBridge</title>
 </head>
 
 <body>
+    <header class="sticky-top main-header shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light container-fluid">
+            <div class="container py-2">
+                <a href="index.html" class="navbar-brand d-flex align-items-center">
+                    <h3 class="mb-0 fw-bold text-primary">HealthBridge</h3>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#MobileMenu"
+                    aria-controls="MobileMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between ms-5">
+                    <!-- Main Links -->
+                    <ul class="navbar-nav gap-3">
+                        <li class="nav-item"><a class="nav-link without-arrow fw-semibold"
+                                href="../index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link without-arrow fw-semibold"
+                                href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link without-arrow  fw-semibold"
+                                href="#">Services</a></li>
+                        <li class="nav-item"><a class="nav-link without-arrow fw-semibold"
+                                href="contact.html">Contact</a>
+                        </li>
+                    </ul>
+
+                    <!-- Search Bar -->
+                    <form class="d-none d-lg-flex me-3 gap-1" role="search">
+                        <div class="position-relative" style="max-width: 300px;">
+                            <input class="form-control ps-5 shadow-sm" type="search" placeholder="Search..."
+                                aria-label="Search">
+                            <i class='bx bx-search position-absolute top-50 translate-middle-y'
+                                style="left: 15px; font-size: 1.2rem; color: #6c757d;"></i>
+                        </div>
+
+                        <button class="btn btn-outline-dark" type="submit">Search</button>
+                    </form>
+
+                    <!-- Account Buttons -->
+                    <div class="d-none d-lg-flex align-items-center gap-1">
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#login"
+                            class="btn btn-outline-dark">Login</button>
+                        <button type="button" data-bs-toggle="modal" data-bs-target="#signup"
+                            class="btn btn-primary text-white">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <section class="bg-light text-dark text-center py-5">
         <div class="container">
-            <h1 class="display-4 text-primary fw-bold">Our Services</h1>
+            <h1 class="text-primary fw-bold">Our Services</h1>
             <p class="lead">HealthBridge brings healthcare to your fingertips with fast, reliable, and secure solutions.
             </p>
         </div>
@@ -158,7 +206,7 @@
                         </blockquote>
                     </div>
                 </div>
-                
+
                 <!-- Controls -->
                 <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel"
                     data-bs-slide="prev">
