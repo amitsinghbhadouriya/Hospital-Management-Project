@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous" />
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
+
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css">
+    <title>Medicines | HealthBridge</title>
+    <style>
+        .medicine-card {
+            border-radius: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            background-color: #fff;
+            padding: 1rem 1.25rem 1.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid #e3e3e3;
+        }
+
+        .medicine-card:hover {
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            border-color: #0d6efd;
+        }
+
+        .medicine-img {
+            border-radius: 1rem;
+            object-fit: cover;
+            width: 100%;
+            height: 230px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .medicine-card:hover .medicine-img {
+            transform: scale(1.05);
+        }
+
+        .medicine-card h5 {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            color: #212529;
+        }
+
+        .medicine-card small.text-secondary {
+            font-size: 0.9rem;
+        }
+
+        .delivery-date {
+            font-weight: 600;
+            color: #198754;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .price-old {
+            font-size: 0.875rem;
+            text-decoration: line-through;
+            color: #6c757d;
+            margin-right: 0.5rem;
+        }
+
+        .discount {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #198754;
+        }
+
+        .price-new {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0d6efd;
+            margin-bottom: 1rem;
+        }
+
+        .medicine-card .btn {
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .medicine-card .btn-outline-primary:hover {
+            background-color: #0d6efd;
+            color: #fff;
+            border-color: #0d6efd;
+        }
+
+        .medicine-card .btn-primary:hover {
+            background-color: #0b5ed7;
+            border-color: #0b5ed7;
+        }
+
+        .d-flex.flex-column.h-100 {
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Secondary Navigation -->
+    <div class="second-header shadow-sm py-2 d-none d-lg-block">
+        <div class="container">
+            <ul class="nav justify-content-center gap-4">
+
+                <!-- Appointment Booking bar -->
+                <li class="nav-item"><a class="nav-link without-arrow  fw-semibold"
+                        href="appointment-booking.html">Appointment Booking</a>
+                </li>
+
+                <!-- Hospital bar -->
+                <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1" href="#">
+                        Hospitals <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                    <ul class="dropdown-menu shadow rounded-3">
+
+                        <!-- Submenu: Apollo -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.apollohospitals.com/">Apollo</a>
+                        </li>
+
+                        <!-- Submenu: AIIMS -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.aiims.edu/">AIIMS</a>
+                        </li>
+
+                        <!-- Submenu: Fortis -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.fortishealthcare.com/">Fortis</a>
+                        </li>
+
+                        <!-- Submenu: Medanta -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.medanta.org/">Medanta</a>
+                        </li>
+
+                        <!-- Submenu: BLK-MAX -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.blkmaxhospital.com/">BLK
+                                Super</a>
+                        </li>
+
+                        <!-- Submenu: others -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                <li><a class="dropdown-item" href="https://www.artemishospitals.com/">Artemis</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.wockhardthospitals.com/">Wockhardt</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.narayanahealth.org/">Narayana</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.maxhealthcare.in/">Max Hospital</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.carehospitals.com/">Care Hospital</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.marengoasiahospitals.com/">Marengo
+                                        Asia</a></li>
+                                <li><a class="dropdown-item" href="https://billrothhospitals.com/">Billroth</a></li>
+                                <li><a class="dropdown-item" href="#">More</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Doctor bar -->
+                <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1" href="#">
+                        Doctors <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                    <ul class="dropdown-menu shadow rounded-3">
+
+                        <!-- Submenu: Neurologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Neurologist</a>
+                        </li>
+
+                        <!-- Submenu: Dermatologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Dermatologist</a>
+                        </li>
+
+                        <!-- Submenu: Cardiologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Cardiologist</a>
+                        </li>
+
+                        <!-- Submenu: Allergists -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Allergists</a>
+                        </li>
+
+                        <!-- Submenu: others -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                <li><a class="dropdown-item" href="#">Anesthesiologist</a></li>
+                                <li><a class="dropdown-item" href="#">Family Physicians</a></li>
+                                <li><a class="dropdown-item" href="#">Gastroenterologist</a></li>
+                                <li><a class="dropdown-item" href="#">Endocrinologist</a></li>
+                                <li><a class="dropdown-item" href="#">Hematologist</a></li>
+                                <li><a class="dropdown-item" href="#">Nephrologist</a></li>
+                                <li><a class="dropdown-item" href="#">Surgeon</a></li>
+                                <li><a class="dropdown-item" href="#">More</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Medical bar -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link fw-semibold d-flex align-items-center gap-1" href="#">
+                        Medicals<i class='bx bx-chevron-up arrow-icon fs-4'></i>
+                    </a>
+                    <ul class="dropdown-menu shadow rounded-3">
+
+                        <!-- Submenu: Nearby Medicals -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Nearby Medicals</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-100 top-0 mt-0">
+                                <li><a class="dropdown-item" href="#">Within 1 km</a></li>
+                                <li><a class="dropdown-item" href="#">Within 5 km</a></li>
+                                <li><a class="dropdown-item" href="#">Within 10 km</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Submenu: 24/7 Pharmacy -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">24/7 Pharmacy</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-100 top-0 mt-0">
+                                <li><a class="dropdown-item" href="#">All Night Services</a></li>
+                                <li><a class="dropdown-item" href="#">Emergency Delivery</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- other submenu -->
+                        <li><a class="dropdown-item" href="#">Top Rated</a></li>
+                        <li><a class="dropdown-item" href="#">Home Delivery</a></li>
+                    </ul>
+                </li>
+
+                <!-- Clinic bar -->
+                <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1" href="#">
+                        Clinics <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                    <ul class="dropdown-menu shadow rounded-3">
+
+                        <!-- Submenu: Primary Care Clinics -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Primary care clinics</a>
+                        </li>
+
+                        <!-- Submenu: Dermatologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Specialized clinics</a>
+                        </li>
+
+                        <!-- Submenu: Cardiologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Mental health clinics</a>
+                        </li>
+
+                        <!-- Submenu: Allergists -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Retail clinics</a>
+                        </li>
+
+                        <!-- Submenu: others -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                <li><a class="dropdown-item" href="#">Sexual health clinics</a></li>
+                                <li><a class="dropdown-item" href="#">Addiction services clinics</a></li>
+                                <li><a class="dropdown-item" href="#">Community health clinics</a></li>
+                                <li><a class="dropdown-item" href="#">Endocrinologist</a></li>
+                                <li><a class="dropdown-item" href="#">Dialysis clinics</a></li>
+                                <li><a class="dropdown-item" href="#">More</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Medicine bar -->
+                <li class="nav-item"><a class="nav-link without-arrow  fw-semibold" href="medicine.html">Medicines</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <section class="py-5 bg-light text-center">
+        <div class="container">
+            <h1 class="text-primary fw-bold mb-4">Our Medicines</h1>
+            <p class="text-muted fs-5">
+                Discover our extensive selection of authentic medicines, carefully sourced and delivered promptly to
+                your doorstep with utmost safety and reliability.
+            </p>
+        </div>
+    </section>
+
+    <section class="conatainer-fluid bg-light">
+        <div class="container text-center">
+            <div class="row g-4 justify-content-center">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/paracetamol.jpg" alt="Paracetamol 500MG" class="medicine-img" />
+                        <h5 class="text-truncate" title="Paracetamol 500MG">Paracetamol 500MG</h5>
+                        <p class="text-muted small mb-3 px-2">
+                            Paracetamol helps alleviate headaches, muscle aches, arthritis, and other mild to moderate
+                            pain.
+                        </p>
+                        <small class="text-dark fw-bold mb-1 d-block">Strip Of 15 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new">₹12</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/ibuprofen.jpg" alt="Ibuprofen 400MG" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Ibuprofen 400MG">Ibuprofen 400MG</h5>
+                        <p class="text-muted small mb-3 px-2">
+                            Ibuprofen is a nonsteroidal anti-inflammatory drug used to reduce fever, pain, and
+                            inflammation.
+                        </p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 10 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹35</div>
+
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/aspirin.webp" alt="Aspirin Dispersible 300MG" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Aspirin Dispersible 300mg">Aspirin Dispersible
+                            300mg</h5>
+                        <p class="text-muted small mb-3 px-2">Aspirin is a pain reliever and blood thinner used to treat
+                            pain,
+                            fever, inflammation, and prevent heart attacks.</p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 30 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹130</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/diclofenac.png" alt="Diclofenac Sodium Tablet, 75 mg"
+                            class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Diclofenac Sodium Tablet, 75 mg">Diclofenac Sodium
+                            Tablet, 75
+                            mg</h5>
+                        <p class="text-muted small mb-3 px-2">Diclofenac is a nonsteroidal anti-inflammatory drug used
+                            to relieve
+                            pain and reduce inflammation in conditions like arthritis and muscle injuries.</p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 10x10 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹121</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/naproxen.jpg" alt="Aspirin Dispersible 300MG" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Aspirin Dispersible 300mg">Naproxen 500mg</h5>
+                        <p class="text-muted small mb-3 px-2">Naproxen is used to relieve pain, swelling, and stiffness
+                            from
+                            conditions like arthritis, muscle aches, and menstrual cramps.</p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 10x15 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹207</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/loratadine.webp" alt="Loratadine 10mg" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Loratadine 10mg">Loratadine 10mg</h5>
+                        <p class="text-muted small mb-3 px-2">Loratadine is an antihistamine used to relieve allergy
+                            symptoms such
+                            as sneezing, runny nose, allergy and itchy eyes.</p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 10x10 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹36</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/dextromethorphan.jpeg" alt="Dextromethorphan 20 Mg" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Dextromethorphan 20 Mg">Dextromethorphan 20 Mg</h5>
+                        <p class="text-muted small mb-3 px-2">Dextromethorphan is a cough suppressant used to relieve
+                            dry,
+                            irritating coughs by acting on the brain's cough center.</p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 10x10 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹468</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/chlorpheniramine.jpg" alt="Chlorpheniramine 4mg" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Chlorpheniramine 4mg">Chlorpheniramine 4mg</h5>
+                        <p class="text-muted small mb-3 px-2">Chlorpheniramine is an antihistamine used to relieve
+                            symptoms of
+                            allergies, hay fever, and the common cold such as sneezing and runny nose..</p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 25x4x10 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹11/strip</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/levocetirizine.jpg" alt="Levocetirizine 5mg" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Levocetirizine 5mg">Levocetirizine 5mg</h5>
+                        <p class="text-muted small mb-3 px-2">Levocetirizine is an antihistamine used to treat
+                            allergies, including
+                            runny nose, sneezing, and skin rashes like urticaria.</p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 10 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹31</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/Phenylephrine.jpg" alt="Phenylephrine 10Mg" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Phenylephrine 10Mg">Phenylephrine 10Mg</h5>
+                        <p class="text-muted small mb-3 px-2">Phenylephrine is a decongestant used to relieve nasal
+                            congestion
+                            caused by colds, allergies, or sinus infections.</p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 15 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹70</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/Diphenhydramine.webp" alt="Diphenhydramine syrup" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Diphenhydramine syrup">Diphenhydramine syrup</h5>
+                        <p class="text-muted small mb-3 px-2">Diphenhydramine is an antihistamine used to treat allergy
+                            symptoms,
+                            motion sickness, and as a short-term sleep aid.</p>
+                        <small class="fw-bold text-dark mb-1 d-block">100 ml bottle</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹75</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex">
+                    <div class="medicine-card">
+                        <img src="../images/pantoprazole.webp" alt="Pantoprazole 40mg" class="medicine-img" />
+                        <h5 class="fw-semibold text-truncate" title="Pantoprazole 40mg">Pantoprazole 40 mg</h5>
+                        <p class="text-muted small mb-3 px-2">Pantoprazole is a proton pump inhibitor that reduces
+                            stomach acid to
+                            treat acid reflux, ulcers, and gastroesophageal reflux disease </p>
+                        <small class="fw-bold text-dark mb-1 d-block">Strip Of 10x10 Tablets</small>
+                        <small class="text-success mb-1 delivery-date">Loading...</small>
+                        <div class="price-new mb-2">₹650</div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-outline-primary flex-fill">Add to Cart</button>
+                            <button class="btn btn-primary flex-fill">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="text-center mt-5 mb-5">
+                <button type="button" id="backHomeBtn" class="btn btn-primary ms-3"><i
+                        class="fas fa-arrow-left me-2"></i>Back
+                    to Home</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function getNextMonday() {
+            const today = new Date();
+            const day = today.getDay();
+            const daysToAdd = (8 - day) % 7 || 7;
+            const nextMonday = new Date(today);
+            nextMonday.setDate(today.getDate() + daysToAdd);
+            const options = { weekday: 'short', day: 'numeric', month: 'short' };
+            return nextMonday.toLocaleDateString('en-US', options);
+        }
+
+        document.querySelectorAll('.delivery-date').forEach(el => {
+            el.textContent = 'Get by ' + getNextMonday();
+        });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const backHomeBtn = document.getElementById("backHomeBtn");
+            backHomeBtn.addEventListener("click", function () {
+                window.location.href = "../index.html";
+            });
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>
