@@ -17,6 +17,7 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/styles.css">
 
     <title>Appointment Booking | HealthBridge</title>
 
@@ -101,6 +102,190 @@
 </head>
 
 <body>
+    <div class="second-header shadow-sm py-2 d-none d-lg-block">
+        <div class="container">
+            <ul class="nav justify-content-center gap-4">
+
+                <!-- Appointment Booking bar -->
+                <li class="nav-item"><a class="nav-link without-arrow  fw-semibold"
+                        href="appointment-booking.html">Appointment Booking</a>
+                </li>
+
+                <!-- Hospital bar -->
+                <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1" href="#">
+                        Hospitals <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                    <ul class="dropdown-menu shadow rounded-3">
+
+                        <!-- Submenu: Apollo -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.apollohospitals.com/">Apollo</a>
+                        </li>
+
+                        <!-- Submenu: AIIMS -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.aiims.edu/">AIIMS</a>
+                        </li>
+
+                        <!-- Submenu: Fortis -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.fortishealthcare.com/">Fortis</a>
+                        </li>
+
+                        <!-- Submenu: Medanta -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.medanta.org/">Medanta</a>
+                        </li>
+
+                        <!-- Submenu: BLK-MAX -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="https://www.blkmaxhospital.com/">BLK
+                                Super</a>
+                        </li>
+
+                        <!-- Submenu: others -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                <li><a class="dropdown-item" href="https://www.artemishospitals.com/">Artemis</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.wockhardthospitals.com/">Wockhardt</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.narayanahealth.org/">Narayana</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.maxhealthcare.in/">Max Hospital</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.carehospitals.com/">Care Hospital</a>
+                                </li>
+                                <li><a class="dropdown-item" href="https://www.marengoasiahospitals.com/">Marengo
+                                        Asia</a></li>
+                                <li><a class="dropdown-item" href="https://billrothhospitals.com/">Billroth</a></li>
+                                <li><a class="dropdown-item" href="#">More</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Doctor bar -->
+                <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1" href="#">
+                        Doctors <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                    <ul class="dropdown-menu shadow rounded-3">
+
+                        <!-- Submenu: Neurologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Neurologist</a>
+                        </li>
+
+                        <!-- Submenu: Dermatologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Dermatologist</a>
+                        </li>
+
+                        <!-- Submenu: Cardiologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Cardiologist</a>
+                        </li>
+
+                        <!-- Submenu: Allergists -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Allergists</a>
+                        </li>
+
+                        <!-- Submenu: others -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                <li><a class="dropdown-item" href="#">Anesthesiologist</a></li>
+                                <li><a class="dropdown-item" href="#">Family Physicians</a></li>
+                                <li><a class="dropdown-item" href="#">Gastroenterologist</a></li>
+                                <li><a class="dropdown-item" href="#">Endocrinologist</a></li>
+                                <li><a class="dropdown-item" href="#">Hematologist</a></li>
+                                <li><a class="dropdown-item" href="#">Nephrologist</a></li>
+                                <li><a class="dropdown-item" href="#">Surgeon</a></li>
+                                <li><a class="dropdown-item" href="#">More</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Medical bar -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link fw-semibold d-flex align-items-center gap-1" href="#">
+                        Medicals<i class='bx bx-chevron-up arrow-icon fs-4'></i>
+                    </a>
+                    <ul class="dropdown-menu shadow rounded-3">
+
+                        <!-- Submenu: Nearby Medicals -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Nearby Medicals</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-100 top-0 mt-0">
+                                <li><a class="dropdown-item" href="#">Within 1 km</a></li>
+                                <li><a class="dropdown-item" href="#">Within 5 km</a></li>
+                                <li><a class="dropdown-item" href="#">Within 10 km</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- Submenu: 24/7 Pharmacy -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">24/7 Pharmacy</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-100 top-0 mt-0">
+                                <li><a class="dropdown-item" href="#">All Night Services</a></li>
+                                <li><a class="dropdown-item" href="#">Emergency Delivery</a></li>
+                            </ul>
+                        </li>
+
+                        <!-- other submenu -->
+                        <li><a class="dropdown-item" href="#">Top Rated</a></li>
+                        <li><a class="dropdown-item" href="#">Home Delivery</a></li>
+                    </ul>
+                </li>
+
+                <!-- Clinic bar -->
+                <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1" href="#">
+                        Clinics <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                    <ul class="dropdown-menu shadow rounded-3">
+
+                        <!-- Submenu: Primary Care Clinics -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Primary care clinics</a>
+                        </li>
+
+                        <!-- Submenu: Dermatologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Specialized clinics</a>
+                        </li>
+
+                        <!-- Submenu: Cardiologist -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Mental health clinics</a>
+                        </li>
+
+                        <!-- Submenu: Allergists -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Retail clinics</a>
+                        </li>
+
+                        <!-- Submenu: others -->
+                        <li class="dropdown-submenu position-relative">
+                            <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                            <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                <li><a class="dropdown-item" href="#">Sexual health clinics</a></li>
+                                <li><a class="dropdown-item" href="#">Addiction services clinics</a></li>
+                                <li><a class="dropdown-item" href="#">Community health clinics</a></li>
+                                <li><a class="dropdown-item" href="#">Endocrinologist</a></li>
+                                <li><a class="dropdown-item" href="#">Dialysis clinics</a></li>
+                                <li><a class="dropdown-item" href="#">More</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Medicine bar -->
+                <li class="nav-item"><a class="nav-link without-arrow  fw-semibold"
+                        href="medicine.html">Medicines</a></li>
+            </ul>
+        </div>
+    </div>
+
     <!-- form Modal -->
     <div class="modal fade" id="form-model" tabindex="-1" aria-labelledby="formlabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -125,7 +310,7 @@
                             <div class="col-md-6">
                                 <label for="fullname" class="form-label">Full Name</label>
                                 <input type="text" class="form-control" id="fullname" name="fullname"
-                                    placeholder="Enter your name" required />
+                                    placeholder="Ex:- Jack,etc.." required />
                             </div>
                             <div class="col-md-6">
                                 <label for="age" class="form-label">Age</label>
@@ -135,12 +320,12 @@
                             <div class="col-md-6">
                                 <label for="phone" class="form-label">Phone Number</label>
                                 <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{10}"
-                                    placeholder="Enter your number" required />
+                                    placeholder="Ex:- 7046868643" required />
                             </div>
                             <div class="col-md-6">
                                 <label for="email" class="form-label">Email Id</label>
                                 <input type="email" class="form-control" id="email" name="email"
-                                    placeholder="Enter your email" required />
+                                    placeholder="Ex:- abc33@gmail.com" required />
                             </div>
                         </div>
 
