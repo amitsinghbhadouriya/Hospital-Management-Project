@@ -80,128 +80,146 @@
 
     <title>Chatbot | HealthBridge - Your Digital Healthcare Companion</title>
 
-<style>
-    /* Enhanced chat message styles */
-    .message {
-        margin-bottom: 15px;
-        max-width: 85%;
-        word-wrap: break-word;
-        animation: fadeIn 0.3s ease-in;
-    }
-    
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(10px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-    
-    .message.user {
-        margin-left: auto;
-        background: linear-gradient(135deg, #0d6efd, #0b5ed7);
-        color: white;
-        border-radius: 18px 18px 4px 18px;
-        padding: 12px 16px;
-        box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
-    }
-    
-    .message.bot {
-        margin-right: auto;
-        background-color: #f8f9fa;
-        color: #212529;
-        border-radius: 18px 18px 18px 4px;
-        padding: 12px 16px;
-        border: 1px solid #e9ecef;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    
-    .bot-name {
-        font-weight: bold;
-        color: #0d6efd;
-        margin-bottom: 5px;
-        font-size: 0.85rem;
-    }
-    
-    /* Ensure proper scrolling */
-    #chatMessages {
-        scroll-behavior: smooth;
-        scrollbar-width: thin;
-        scrollbar-color: #dee2e6 transparent;
-    }
-    
-    #chatMessages::-webkit-scrollbar {
-        width: 6px;
-    }
-    
-    #chatMessages::-webkit-scrollbar-track {
-        background: transparent;
-    }
-    
-    #chatMessages::-webkit-scrollbar-thumb {
-        background-color: #dee2e6;
-        border-radius: 3px;
-    }
-    
-    #chatMessages::-webkit-scrollbar-thumb:hover {
-        background-color: #adb5bd;
-    }
-    
-    /* Pulse animation for typing indicator */
-    @keyframes pulse {
-        0% { transform: scale(0.8); opacity: 0.5; }
-        50% { transform: scale(1.2); opacity: 1; }
-        100% { transform: scale(0.8); opacity: 0.5; }
-    }
-    
-    /* Input focus effects */
-    #messageInput:focus {
-        border-color: #0d6efd;
-        box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
-    }
-    
-    /* Button hover effects */
-    .btn-outline-primary:hover {
-        transform: translateY(-1px);
-        transition: all 0.2s ease;
-    }
-    
-    /* Mobile responsiveness */
-    @media (max-width: 768px) {
-        .card {
-            height: 70vh !important;
-            margin: 10px;
-        }
-        
+    <style>
+        /* Enhanced chat message styles */
         .message {
-            max-width: 95%;
+            margin-bottom: 15px;
+            max-width: 85%;
+            word-wrap: break-word;
+            animation: fadeIn 0.3s ease-in;
         }
-        
-        .row.g-1 .col-6 {
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message.user {
+            margin-left: auto;
+            background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+            color: white;
+            border-radius: 18px 18px 4px 18px;
+            padding: 12px 16px;
+            box-shadow: 0 2px 8px rgba(13, 110, 253, 0.3);
+        }
+
+        .message.bot {
+            margin-right: auto;
+            background-color: #f8f9fa;
+            color: #212529;
+            border-radius: 18px 18px 18px 4px;
+            padding: 12px 16px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .bot-name {
+            font-weight: bold;
+            color: #0d6efd;
             margin-bottom: 5px;
+            font-size: 0.85rem;
         }
-        
-        .btn-sm {
-            font-size: 0.75rem;
-            padding: 0.25rem 0.5rem;
+
+        /* Ensure proper scrolling */
+        #chatMessages {
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #dee2e6 transparent;
         }
-    }
-    
-    /* Fix for chat container positioning */
-    #chat-section {
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-    }
-    
-    /* Ensure the chat card stays centered and accessible */
-    .card.shadow-lg {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-    }
-</style>
+
+        #chatMessages::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #chatMessages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #chatMessages::-webkit-scrollbar-thumb {
+            background-color: #dee2e6;
+            border-radius: 3px;
+        }
+
+        #chatMessages::-webkit-scrollbar-thumb:hover {
+            background-color: #adb5bd;
+        }
+
+        /* Pulse animation for typing indicator */
+        @keyframes pulse {
+            0% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.2);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(0.8);
+                opacity: 0.5;
+            }
+        }
+
+        /* Input focus effects */
+        #messageInput:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        /* Button hover effects */
+        .btn-outline-primary:hover {
+            transform: translateY(-1px);
+            transition: all 0.2s ease;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .card {
+                height: 70vh !important;
+                margin: 10px;
+            }
+
+            .message {
+                max-width: 95%;
+            }
+
+            .row.g-1 .col-6 {
+                margin-bottom: 5px;
+            }
+
+            .btn-sm {
+                font-size: 0.75rem;
+                padding: 0.25rem 0.5rem;
+            }
+        }
+
+        /* Fix for chat container positioning */
+        #chat-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Ensure the chat card stays centered and accessible */
+        .card.shadow-lg {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
 </head>
 
 <body>
-     <!-- Login Modal -->
+    <!-- Login Modal -->
     <div class="modal fade" id="login" tabindex="-1" aria-labelledby="loginLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content shadow rounded-4">
@@ -338,9 +356,10 @@
                 <div class="collapse navbar-collapse justify-content-between ms-5">
                     <!-- Main Links -->
                     <ul class="navbar-nav gap-3">
-                        <li class="nav-item"><a class="nav-link without-arrow fw-semibold" href="../index.html">Home</a></li>
-                        <li class="nav-item"><a class="nav-link without-arrow fw-semibold"
-                                href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link without-arrow fw-semibold" href="../index.html">Home</a>
+                        </li>
+                        <li class="nav-item"><a class="nav-link without-arrow fw-semibold" href="about.html">About</a>
+                        </li>
                         <li class="nav-item"><a class="nav-link without-arrow  fw-semibold"
                                 href="services.html">Services</a></li>
                         <li class="nav-item"><a class="nav-link without-arrow fw-semibold"
@@ -562,6 +581,7 @@
         </div>
 
         <!-- Mobile Offcanvas -->
+        <!-- Mobile Offcanvas -->
         <div class="offcanvas offcanvas-start" tabindex="-1" id="MobileMenu">
             <div class="offcanvas-header">
                 <h3 class="offcanvas-title fw-bold text-primary">HealthBridge</h3>
@@ -572,13 +592,239 @@
                     <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <hr>
-                    <li class="nav-item"><a class="nav-link" href="#">Appointment Booking</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Hospitals</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Doctors</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Medicals</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Clinics</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Medicines</a></li>
+                    <li class="nav-item"><a class="nav-link" href="appointment-booking.html">Appointment
+                            Booking</a></li>
+                    <!-- Hospital bar -->
+                    <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1"
+                            href="#">
+                            Hospitals <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                        <ul class="dropdown-menu shadow rounded-3">
+
+                            <!-- Submenu: Apollo -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle"
+                                    href="https://www.apollohospitals.com/">Apollo</a>
+                            </li>
+
+                            <!-- Submenu: AIIMS -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="https://www.aiims.edu/">AIIMS</a>
+                            </li>
+
+                            <!-- Submenu: Fortis -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle"
+                                    href="https://www.fortishealthcare.com/">Fortis</a>
+                            </li>
+
+                            <!-- Submenu: Medanta -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="https://www.medanta.org/">Medanta</a>
+                            </li>
+
+                            <!-- Submenu: BLK-MAX -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="https://www.blkmaxhospital.com/">BLK
+                                    Super</a>
+                            </li>
+
+                            <!-- Submenu: others -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                                <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                    <li><a class="dropdown-item" href="https://www.artemishospitals.com/">Artemis</a>
+                                    </li>
+                                    <li><a class="dropdown-item"
+                                            href="https://www.wockhardthospitals.com/">Wockhardt</a></li>
+                                    <li><a class="dropdown-item" href="https://www.narayanahealth.org/">Narayana</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="https://www.maxhealthcare.in/">Max Hospital</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="https://www.carehospitals.com/">Care Hospital</a>
+                                    </li>
+                                    <li><a class="dropdown-item" href="https://www.marengoasiahospitals.com/">Marengo
+                                            Asia</a></li>
+                                    <li><a class="dropdown-item" href="https://billrothhospitals.com/">Billroth</a></li>
+                                    <li><a class="dropdown-item" href="#">More</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Doctor bar -->
+                    <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1"
+                            href="#">
+                            Doctors <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                        <ul class="dropdown-menu shadow rounded-3">
+
+                            <!-- Submenu: Neurologist -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Neurologist</a>
+                            </li>
+
+                            <!-- Submenu: Dermatologist -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dermatologist</a>
+                            </li>
+
+                            <!-- Submenu: Cardiologist -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Cardiologist</a>
+                            </li>
+
+                            <!-- Submenu: Allergists -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Allergists</a>
+                            </li>
+
+                            <!-- Submenu: others -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                                <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                    <li><a class="dropdown-item" href="#">Anesthesiologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Family Physicians</a></li>
+                                    <li><a class="dropdown-item" href="#">Gastroenterologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Endocrinologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Hematologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Nephrologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Surgeon</a></li>
+                                    <li><a class="dropdown-item" href="#">More</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <!-- Doctor bar -->
+                    <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1"
+                            href="#">
+                            Doctors <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                        <ul class="dropdown-menu shadow rounded-3">
+
+                            <!-- Submenu: Neurologist -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Neurologist</a>
+                            </li>
+
+                            <!-- Submenu: Dermatologist -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Dermatologist</a>
+                            </li>
+
+                            <!-- Submenu: Cardiologist -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Cardiologist</a>
+                            </li>
+
+                            <!-- Submenu: Allergists -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Allergists</a>
+                            </li>
+
+                            <!-- Submenu: others -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                                <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                    <li><a class="dropdown-item" href="#">Anesthesiologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Family Physicians</a></li>
+                                    <li><a class="dropdown-item" href="#">Gastroenterologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Endocrinologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Hematologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Nephrologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Surgeon</a></li>
+                                    <li><a class="dropdown-item" href="#">More</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <!-- Medical bar -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link fw-semibold d-flex align-items-center gap-1" href="#">
+                            Medicals<i class='bx bx-chevron-up arrow-icon fs-4'></i>
+                        </a>
+                        <ul class="dropdown-menu shadow rounded-3">
+
+                            <!-- Submenu: Nearby Medicals -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Nearby Medicals</a>
+                                <ul class="dropdown-menu shadow rounded-3 position-absolute start-100 top-0 mt-0">
+                                    <li><a class="dropdown-item" href="#">Within 1 km</a></li>
+                                    <li><a class="dropdown-item" href="#">Within 5 km</a></li>
+                                    <li><a class="dropdown-item" href="#">Within 10 km</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- Submenu: 24/7 Pharmacy -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">24/7 Pharmacy</a>
+                                <ul class="dropdown-menu shadow rounded-3 position-absolute start-100 top-0 mt-0">
+                                    <li><a class="dropdown-item" href="#">All Night Services</a></li>
+                                    <li><a class="dropdown-item" href="#">Emergency Delivery</a></li>
+                                </ul>
+                            </li>
+
+                            <!-- other submenu -->
+                            <li><a class="dropdown-item" href="#">Top Rated</a></li>
+                            <li><a class="dropdown-item" href="#">Home Delivery</a></li>
+                        </ul>
+                    </li>
+
+                    <!-- Clinic bar -->
+                    <li class="nav-item dropdown"><a class="nav-link fw-semibold d-flex align-items-center gap-1"
+                            href="#">
+                            Clinics <i class='bx bx-chevron-up arrow-icon fs-4'></i></a>
+                        <ul class="dropdown-menu shadow rounded-3">
+
+                            <!-- Submenu: Primary Care Clinics -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Primary care clinics</a>
+                            </li>
+
+                            <!-- Submenu: Dermatologist -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Specialized clinics</a>
+                            </li>
+
+                            <!-- Submenu: Cardiologist -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Mental health clinics</a>
+                            </li>
+
+                            <!-- Submenu: Allergists -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Retail clinics</a>
+                            </li>
+
+                            <!-- Submenu: others -->
+                            <li class="dropdown-submenu position-relative">
+                                <a class="dropdown-item dropdown-toggle" href="#">Others</a>
+                                <ul class="dropdown-menu shadow rounded-3 position-absolute start-10 top-0 mt-0">
+                                    <li><a class="dropdown-item" href="#">Sexual health clinics</a></li>
+                                    <li><a class="dropdown-item" href="#">Addiction services clinics</a></li>
+                                    <li><a class="dropdown-item" href="#">Community health clinics</a></li>
+                                    <li><a class="dropdown-item" href="#">Endocrinologist</a></li>
+                                    <li><a class="dropdown-item" href="#">Dialysis clinics</a></li>
+                                    <li><a class="dropdown-item" href="#">More</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="medicine.html">Medicines</a></li>
+                    <hr>
+                    <!-- Search Bar (Responsive for Breadcrumb) -->
+                    <form
+                        class="d-flex flex-column flex-lg-row w-100 gap-2 align-items-stretch align-items-lg-center mb-2 mb-lg-0"
+                        role="search">
+                        <div class="position-relative w-100">
+                            <input class="form-control ps-5 shadow-sm w-100" type="search" placeholder="Search..."
+                                aria-label="Search" id="searchInput">
+                            <i class='bx bx-search position-absolute top-50 translate-middle-y'
+                                style="left: 15px; font-size: 1.2rem; color: #6c757d;"></i>
+                        </div>
+
+                        <button class="btn btn-outline-dark" type="submit" style="min-width: 100px;">Search</button>
+                    </form>
+
                     <hr>
                     <li class="nav-item"><a href="login.html" class="btn btn-outline-dark w-100 mb-2">Login</a>
                     </li>
@@ -861,382 +1107,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
         crossorigin="anonymous"></script>
-    <script src="../script.js"></script>
+    <script src="../js/assist.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWCozFSxQBxwHKO" crossorigin="anonymous"></script>
-    <script>
-        // VAPI Configuration
-        const VAPI_PUBLIC_KEY = 'ca9ef318-05b0-4010-939a-e8ee43c1eadb';
-        const VAPI_ASSISTANT_ID = 'your-assistant-id'; // You'll need to create this in VAPI dashboard
-
-        // Initialize VAPI
-        let vapi;
-        let isVapiLoaded = false;
-        let isCallActive = false;
-        let currentConversation = [];
-
-        // Load VAPI SDK
-        function loadVapiSDK() {
-            return new Promise((resolve, reject) => {
-                if (window.Vapi) {
-                    resolve();
-                    return;
-                }
-
-                const script = document.createElement('script');
-                script.src = 'https://cdn.jsdelivr.net/npm/@vapi-ai/web@latest/dist/index.js';
-                script.onload = () => {
-                    console.log('VAPI SDK loaded successfully');
-                    resolve();
-                };
-                script.onerror = () => {
-                    console.error('Failed to load VAPI SDK');
-                    reject(new Error('Failed to load VAPI SDK'));
-                };
-                document.head.appendChild(script);
-            });
-        }
-
-        // Initialize VAPI client
-        async function initializeVapi() {
-            try {
-                await loadVapiSDK();
-
-                vapi = new window.Vapi(VAPI_PUBLIC_KEY);
-                isVapiLoaded = true;
-
-                // Set up event listeners
-                setupVapiEventListeners();
-
-                console.log('VAPI initialized successfully');
-
-                // Enable voice button
-                const voiceBtn = document.getElementById('voiceButton');
-                if (voiceBtn) {
-                    voiceBtn.disabled = false;
-                    voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
-                }
-
-            } catch (error) {
-                console.error('Failed to initialize VAPI:', error);
-                showErrorMessage('Voice feature is currently unavailable');
-            }
-        }
-
-        // Set up VAPI event listeners
-        function setupVapiEventListeners() {
-            if (!vapi) return;
-
-            // Call started
-            vapi.on('call-start', () => {
-                console.log('Call started');
-                isCallActive = true;
-                updateVoiceButton(true);
-                showTypingIndicator();
-                addBotMessage('🎤 Voice call started. I\'m listening...');
-            });
-
-            // Call ended
-            vapi.on('call-end', (callData) => {
-                console.log('Call ended:', callData);
-                isCallActive = false;
-                updateVoiceButton(false);
-                hideTypingIndicator();
-                addBotMessage('👋 Voice call ended. You can continue typing or start another voice call.');
-            });
-
-            // Speech started (user started speaking)
-            vapi.on('speech-start', () => {
-                console.log('User started speaking');
-                showTypingIndicator('Listening...');
-            });
-
-            // Speech ended (user stopped speaking)
-            vapi.on('speech-end', () => {
-                console.log('User stopped speaking');
-                showTypingIndicator('Processing...');
-            });
-
-            // Message received from assistant
-            vapi.on('message', (message) => {
-                console.log('Message received:', message);
-
-                if (message.type === 'transcript' && message.transcriptType === 'final') {
-                    if (message.role === 'user') {
-                        // User's speech transcript
-                        addUserMessage(message.transcript);
-                    } else if (message.role === 'assistant') {
-                        // Assistant's response
-                        hideTypingIndicator();
-                        addBotMessage(message.transcript);
-                    }
-                }
-            });
-
-            // Error handling
-            vapi.on('error', (error) => {
-                console.error('VAPI Error:', error);
-                isCallActive = false;
-                updateVoiceButton(false);
-                hideTypingIndicator();
-                showErrorMessage('Voice call error: ' + error.message);
-            });
-        }
-
-        // Start voice call
-        async function startVoiceCall() {
-            if (!isVapiLoaded) {
-                showErrorMessage('Voice feature is not ready yet');
-                return;
-            }
-
-            if (isCallActive) {
-                // End current call
-                vapi.stop();
-                return;
-            }
-
-            try {
-                // Start call with assistant configuration
-                await vapi.start({
-                    // If you have an assistant ID, use it:
-                    // assistantId: VAPI_ASSISTANT_ID,
-
-                    // Or configure the assistant inline:
-                    assistant: {
-                        model: {
-                            provider: 'openai',
-                            model: 'gpt-3.5-turbo',
-                            messages: [
-                                {
-                                    role: 'system',
-                                    content: `You are MediAssist, a virtual health assistant for HealthBridge. You help patients with:
-                            - Appointment booking
-                            - Doctor availability
-                            - Medical information
-                            - Patient registration
-                            - Prescription queries
-                            - General health questions
-                            
-                            Be helpful, professional, and empathetic. Keep responses concise for voice interaction.
-                            If asked about serious medical conditions, always recommend consulting with a real doctor.`
-                                }
-                            ]
-                        },
-                        voice: {
-                            provider: 'playht',
-                            voiceId: 'jennifer' // You can change this to other available voices
-                        },
-                        firstMessage: "Hello! I'm MediAssist, your virtual health assistant. How can I help you today?"
-                    }
-                });
-
-            } catch (error) {
-                console.error('Failed to start voice call:', error);
-                showErrorMessage('Failed to start voice call: ' + error.message);
-            }
-        }
-
-        // Update voice button appearance
-        function updateVoiceButton(isActive) {
-            const voiceBtn = document.getElementById('voiceButton');
-            if (!voiceBtn) return;
-
-            if (isActive) {
-                voiceBtn.innerHTML = '<i class="fas fa-stop"></i>';
-                voiceBtn.classList.add('btn-danger');
-                voiceBtn.classList.remove('btn-success');
-                voiceBtn.title = 'Stop Voice Call';
-            } else {
-                voiceBtn.innerHTML = '<i class="fas fa-microphone"></i>';
-                voiceBtn.classList.add('btn-success');
-                voiceBtn.classList.remove('btn-danger');
-                voiceBtn.title = 'Start Voice Call';
-            }
-        }
-
-        // Existing chat functions (updated to work with VAPI)
-        function sendMessage() {
-            const messageInput = document.getElementById('messageInput');
-            const message = messageInput.value.trim();
-
-            if (message === '') return;
-
-            addUserMessage(message);
-            messageInput.value = '';
-
-            // Simulate bot response (replace with actual backend integration)
-            setTimeout(() => {
-                generateBotResponse(message);
-            }, 1000);
-        }
-
-        function sendQuickMessage(message) {
-            addUserMessage(message);
-            setTimeout(() => {
-                generateBotResponse(message);
-            }, 1000);
-        }
-
-        function addUserMessage(message) {
-            const chatMessages = document.getElementById('chatMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message user';
-            messageDiv.textContent = message;
-            chatMessages.appendChild(messageDiv);
-            scrollToBottom();
-        }
-
-        function addBotMessage(message) {
-            const chatMessages = document.getElementById('chatMessages');
-            const messageDiv = document.createElement('div');
-            messageDiv.className = 'message bot';
-
-            const botName = document.createElement('div');
-            botName.className = 'bot-name';
-            botName.textContent = 'MediAssist';
-
-            const botContent = document.createElement('div');
-            botContent.innerHTML = message;
-
-            messageDiv.appendChild(botName);
-            messageDiv.appendChild(botContent);
-            chatMessages.appendChild(messageDiv);
-            scrollToBottom();
-        }
-
-        function generateBotResponse(userMessage) {
-            showTypingIndicator();
-
-            let response = '';
-            const lowerMessage = userMessage.toLowerCase();
-
-            // Healthcare-specific responses
-            if (lowerMessage.includes('appointment') || lowerMessage.includes('book')) {
-                response = `📅 <strong>Appointment Booking</strong><br>
-        I can help you book an appointment! Here's what I need:<br>
-        • Preferred doctor or specialty<br>
-        • Preferred date and time<br>
-        • Type of consultation (in-person/online)<br><br>
-        Which doctor or specialty would you like to see?`;
-            } else if (lowerMessage.includes('doctor') || lowerMessage.includes('availability')) {
-                response = `👨‍⚕️ <strong>Doctor Availability</strong><br>
-        Our available specialists include:<br>
-        • Dr. Smith - Cardiology (Mon-Fri 9AM-5PM)<br>
-        • Dr. Johnson - Dermatology (Tue-Sat 10AM-6PM)<br>
-        • Dr. Williams - General Medicine (Mon-Sun 8AM-8PM)<br><br>
-        Which specialist interests you?`;
-            } else if (lowerMessage.includes('medicine') || lowerMessage.includes('medication') || lowerMessage.includes('prescription')) {
-                response = `💊 <strong>Medicine Information</strong><br>
-        I can provide information about:<br>
-        • Common medications and their uses<br>
-        • Dosage guidelines<br>
-        • Potential side effects<br>
-        • Drug interactions<br><br>
-        <em>⚠️ Always consult your doctor before starting any medication.</em>`;
-            } else if (lowerMessage.includes('register') || lowerMessage.includes('registration')) {
-                response = `👤 <strong>Patient Registration</strong><br>
-        To register as a new patient, I'll need:<br>
-        • Full name and contact details<br>
-        • Date of birth<br>
-        • Insurance information<br>
-        • Emergency contact<br><br>
-        Would you like to start the registration process?`;
-            } else if (lowerMessage.includes('history') || lowerMessage.includes('medical history')) {
-                response = `📋 <strong>Medical History</strong><br>
-        Your medical history helps doctors provide better care. It includes:<br>
-        • Previous diagnoses<br>
-        • Current medications<br>
-        • Allergies and reactions<br>
-        • Family medical history<br><br>
-        Please log in to view your personal medical records.`;
-            } else if (lowerMessage.includes('diabetes')) {
-                response = `🩺 <strong>Diabetes Information</strong><br>
-        Common diabetes medications include:<br>
-        • <strong>Metformin</strong> - First-line treatment for Type 2<br>
-        • <strong>Insulin</strong> - Essential for Type 1, sometimes Type 2<br>
-        • <strong>Glipizide</strong> - Helps pancreas produce more insulin<br><br>
-        <em>⚠️ Please consult an endocrinologist for personalized treatment.</em>`;
-            } else if (lowerMessage.includes('emergency') || lowerMessage.includes('urgent')) {
-                response = `🚨 <strong>Emergency Services</strong><br>
-        For medical emergencies:<br>
-        • Call 108 (Emergency Medical Services)<br>
-        • Visit nearest emergency room<br>
-        • Our 24/7 helpline: +91 98765 43210<br><br>
-        <strong>This chat is not for medical emergencies!</strong>`;
-            } else {
-                response = `Thank you for your message! 😊<br><br>
-        I'm here to help with:<br>
-        • 📅 Booking appointments<br>
-        • 👨‍⚕️ Doctor information<br>
-        • 💊 Medicine queries<br>
-        • 👤 Patient registration<br>
-        • 📋 Medical history<br><br>
-        How can I assist you today?`;
-            }
-
-            setTimeout(() => {
-                hideTypingIndicator();
-                addBotMessage(response);
-            }, 1500);
-        }
-
-        function showTypingIndicator(text = 'MediAssist is typing...') {
-            const indicator = document.getElementById('typingIndicator');
-            if (indicator) {
-                indicator.style.display = 'block';
-                // You can update the text if needed
-            }
-        }
-
-        function hideTypingIndicator() {
-            const indicator = document.getElementById('typingIndicator');
-            if (indicator) {
-                indicator.style.display = 'none';
-            }
-        }
-
-        function scrollToBottom() {
-            const chatMessages = document.getElementById('chatMessages');
-            chatMessages.scrollTop = chatMessages.scrollHeight;
-        }
-
-        function handleKeyPress(event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
-
-        function showErrorMessage(message) {
-            addBotMessage(`❌ <strong>Error:</strong> ${message}`);
-        }
-
-        // Back to home button functionality
-        document.getElementById('backHomeBtn')?.addEventListener('click', function () {
-            window.location.href = '../index.html';
-        });
-
-        // Initialize everything when DOM is loaded
-        document.addEventListener('DOMContentLoaded', function () {
-            console.log('HealthBridge Chat loaded');
-
-            // Initialize VAPI
-            initializeVapi();
-
-            // Focus on message input
-            const messageInput = document.getElementById('messageInput');
-            if (messageInput) {
-                messageInput.focus();
-            }
-        });
-
-        // Clean up on page unload
-        window.addEventListener('beforeunload', function () {
-            if (vapi && isCallActive) {
-                vapi.stop();
-            }
-        });
-    </script>
+    <script src="../script.js"></script>
 </body>
 
 </html>
