@@ -13,19 +13,9 @@
     background-color: var(--primary-color);
 }
 
-.nav-link {
-    transition: all 0.3s ease;
-}
-
 .without-arrow:hover {
     text-decoration: underline;
     color: var(--link-color);
-}
-
-
-.nav-link:hover .link-text {
-    color: var(--link-color);
-    text-decoration: underline;
 }
 
 .search-bar {
@@ -35,12 +25,6 @@
 .second-header div ul li a {
     color: black;
 }
-
-.make-account {
-    display: flex;
-    gap: 2px;
-}
-
 
 .offcanvas-header {
     background-color: var(--primary-color);
@@ -53,7 +37,6 @@
 
 .arrow-icon {
     transition: transform 0.3s ease;
-    border: none;
 }
 
 .nav-link:hover .arrow-icon {
@@ -64,11 +47,6 @@
 .nav-item.dropdown:hover>.dropdown-menu {
     display: block;
     background-color: var(--secondary-color);
-}
-
-.dropdown-submenu {
-    position: relative;
-
 }
 
 .dropdown-submenu>.dropdown-menu {
